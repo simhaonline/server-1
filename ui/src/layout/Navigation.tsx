@@ -52,6 +52,7 @@ class Navigation extends Component<
                 : apps.map((app) => {
                       return (
                           <Link
+                              onClick={() => setNavOpen(false)}
                               className={`${classes.link} item`}
                               to={'/messages/' + app.id}
                               key={app.id}>
@@ -78,7 +79,7 @@ class Navigation extends Component<
                 setNavOpen={setNavOpen}
                 id="message-navigation">
                 <div className={classes.toolbar} />
-                <Link className={classes.link} to="/">
+                <Link className={classes.link} to="/" onClick={() => setNavOpen(false)}>
                     <ListItem button disabled={!loggedIn} className="all">
                         <ListItemText primary="All Messages" />
                     </ListItem>
