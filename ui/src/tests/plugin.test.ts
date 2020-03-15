@@ -70,7 +70,9 @@ const hasReceivedMessage = async (title: RegExp, content: RegExp) => {
 
 const inDetailPage = async (id: number, callback: () => Promise<void>) => {
     const name = await innerText(page, $table.cell(id, Col.Name));
+    process.stdout.write("@@@@@ inDetailPage: after innerText " + name + "\n")
     await page.click($table.cell(id, Col.Details));
+    process.stdout.write("@@@@@ afterClick " + name + "\n")
     await waitForExists(page, '.plugin-info .name > span', name);
 
     await callback();
